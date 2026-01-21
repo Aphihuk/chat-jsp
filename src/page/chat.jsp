@@ -33,6 +33,9 @@
                 <div class="header-actions">
                     <button class="btn-icon" title="New Chat"><i class="fas fa-edit"></i></button>
                     <button class="btn-icon" title="Settings"><i class="fas fa-cog"></i></button>
+                    <a href="<%= request.getContextPath() %>/servlet/LogoutServlet" class="btn-icon btn-logout" title="ออกจากระบบ" onclick="return confirm('คุณต้องการออกจากระบบหรือไม่?');">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
                 </div>
             </div>
             
@@ -128,6 +131,7 @@
     
     <input type="hidden" id="currentChatWith" value="<%= chatWith %>">
     <input type="hidden" id="currentUserId" value="<%= userId %>">
+    <input type="hidden" id="contextPath" value="<%= request.getContextPath() %>">
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../chat.js"></script>

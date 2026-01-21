@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
         
         if(username == null || password == null || username.trim().isEmpty() || password.trim().isEmpty()) {
             request.setAttribute("error", "กรุณากรอกชื่อผู้ใช้และรหัสผ่าน");
-            request.getRequestDispatcher("../page/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/src/page/login.jsp").forward(request, response);
             return;
         }
         

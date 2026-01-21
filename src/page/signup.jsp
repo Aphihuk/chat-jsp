@@ -109,7 +109,7 @@
         </div>
         <% } %>
         
-        <form method="post" action="../../servlet/SignupServlet" id="signupForm">
+        <form method="post" action="<%= request.getContextPath() %>/servlet/SignupServlet" id="signupForm">
             <div class="row g-3">
                 <div class="col-md-6">
                     <label for="firstname" class="form-label">

@@ -1,5 +1,7 @@
+
 let currentChatWith = document.getElementById('currentChatWith').value;
 let currentUserId = document.getElementById('currentUserId').value;
+let contextPath = document.getElementById('contextPath') ? document.getElementById('contextPath').value : '';
 let messageInterval;
 
 // Load chat when page loads
@@ -23,7 +25,7 @@ function sendMessage() {
     }
     
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', '../../servlet/SendMessageServlet', true);
+    xhr.open('POST', contextPath + '/servlet/SendMessageServlet', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     
     xhr.onreadystatechange = function() {
@@ -48,7 +50,7 @@ function loadMessages() {
     if(!currentChatWith) return;
     
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '../../servlet/GetMessagesServlet?fromUser=' + encodeURIComponent(currentUserId) + 
+    xhr.open('GET', contextPath + '/servlet/GetMessagesServlet?fromUser=' + encodeURIComponent(currentUserId) + 
              '&toUser=' + encodeURIComponent(currentChatWith), true);
     
     xhr.onreadystatechange = function() {
@@ -169,7 +171,7 @@ function updateContactPreviews() {
     if(!currentChatWith) return;
     
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '../../servlet/GetLastMessageServlet?userId=' + encodeURIComponent(currentUserId), true);
+    xhr.open('GET', contextPath + '/servlet/GetLastMessageServlet?userId=' + encodeURIComponent(currentUserId), true);
     
     xhr.onreadystatechange = function() {
         if(xhr.readyState === 4 && xhr.status === 200) {
