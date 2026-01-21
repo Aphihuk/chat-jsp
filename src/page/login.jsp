@@ -103,7 +103,7 @@
         <div class="logo-container">
             <img src="../assets/images/logo.jpg" alt="Logo">
             <h2>Chat LINE</h2>
-            <p>เข้าสู่ระบบเพื่อเริ่มสนทนา</p>
+            <p>ເຂົ້າສູ່ລະບົບເພື່ອເລີ່ມຕົ້ນການສົນທະນາ.</p>
         </div>
         
         <% 
@@ -118,24 +118,24 @@
         <form method="post" action="<%= request.getContextPath() %>/servlet/LoginServlet">
             <div class="mb-3">
                 <label for="username" class="form-label">
-                    <i class="fas fa-user me-2"></i>ชื่อผู้ใช้
+                    <i class="fas fa-user me-2"></i>ຊື່ຜູ້ໃຊ້
                 </label>
                 <input type="text" class="form-control" id="username" name="username" required autofocus>
             </div>
             
             <div class="mb-4">
                 <label for="password" class="form-label">
-                    <i class="fas fa-lock me-2"></i>รหัสผ่าน
+                    <i class="fas fa-lock me-2"></i>ລະຫັດຜ່ານ
                 </label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
             
             <button type="submit" class="btn btn-login mb-3">
-                <i class="fas fa-sign-in-alt me-2"></i>เข้าสู่ระบบ
+                <i class="fas fa-sign-in-alt me-2"></i>ເຂົ້າສູ່ລະບົບ
             </button>
             
             <a href="signup.jsp" class="btn btn-signup">
-                <i class="fas fa-user-plus me-2"></i>สมัครสมาชิก
+                <i class="fas fa-user-plus me-2"></i>ສະໝັກສະມາຊິກ
             </a>
         </form>
     </div>

@@ -117,14 +117,14 @@
             <!-- Messages Area -->
             <div class="messages-container" id="messagesContainer">
                 <div class="messages" id="messages">
-                    <!-- Messages will be loaded here via AJAX -->
+                    <!-- ຂໍ້ຄວາມ -->
                 </div>
             </div>
             
             <!-- Input Area -->
             <div class="chat-input-area">
-                <button class="btn-icon" title="Attach-file"><i class="fas fa-paperclip"></i></button>
-                <button class="btn-icon" title="email"><i class="far fa-smile"></i></button>
+                <button class="btn-icon" title="Attach-file" style="color:black;"><i class="fas fa-paperclip"></i></button>
+                <button class="btn-icon" title="email"><i class="far fa-smile" style="color:black;"></i></button>
                 <input type="text" class="chat-input" id="messageInput" placeholder="ພິມຂໍ້ຄວາມ..." onkeypress="handleKeyPress(event)">
                 <button class="btn-send" id="sendBtn" onclick="sendMessage()">
                     <i class="fas fa-paper-plane"></i>

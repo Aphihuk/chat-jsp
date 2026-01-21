@@ -4,6 +4,6 @@
 if(session.getAttribute("user") != null){
     response.sendRedirect("./src/page/chat.jsp");
 } else {
-    response.sendRedirect("./src/page/login.jsp");
+    response.sendRedirect("./src/page/welcome.jsp");
 }
 %>

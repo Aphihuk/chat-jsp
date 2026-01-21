@@ -96,8 +96,8 @@
     <div class="signup-container">
         <div class="logo-container">
             <img src="../assets/images/logo.jpg" alt="Logo">
-            <h2>สมัครสมาชิก</h2>
-            <p>สร้างบัญชีใหม่เพื่อเริ่มสนทนา</p>
+            <h2>ສະໝັກສະມາຊິກ</h2>
+            <p>ສ້າງບັນຊີໃຫມ່ເພື່ອເລີ່ມຕົ້ນການສົນທະນາ.</p>
         </div>
         
         <% 
@@ -113,21 +113,21 @@
             <div class="row g-3">
                 <div class="col-md-6">
                     <label for="firstname" class="form-label">
-                        <i class="fas fa-user me-2"></i>ชื่อ
+                        <i class="fas fa-user me-2"></i>ຊຶ້
                     </label>
                     <input type="text" class="form-control" id="firstname" name="firstname" required>
                 </div>
                 
                 <div class="col-md-6">
                     <label for="lastname" class="form-label">
-                        <i class="fas fa-user me-2"></i>นามสกุล
+                        <i class="fas fa-user me-2"></i>ນາມສະກູນ
                     </label>
                     <input type="text" class="form-control" id="lastname" name="lastname" required>
                 </div>
                 
                 <div class="col-12">
                     <label for="username" class="form-label">
-                        <i class="fas fa-at me-2"></i>ชื่อผู้ใช้
+                        <i class="fas fa-at me-2"></i>ຊື້ຜູ້ໄຊ້
                     </label>
                     <div class="input-group">
                         <span class="input-group-text">@</span>
@@ -137,21 +137,21 @@
                 
                 <div class="col-12">
                     <label for="password" class="form-label">
-                        <i class="fas fa-lock me-2"></i>รหัสผ่าน
+                        <i class="fas fa-lock me-2"></i>ລະຫັດຜ່ານ
                     </label>
                     <input type="password" class="form-control" id="password" name="password" required minlength="6">
                 </div>
                 
                 <div class="col-12">
                     <label for="email" class="form-label">
-                        <i class="fas fa-envelope me-2"></i>อีเมล (ไม่บังคับ)
+                        <i class="fas fa-envelope me-2"></i>ອີເມວ (ບັງຄົດ)
                     </label>
                     <input type="email" class="form-control" id="email" name="email">
                 </div>
                 
                 <div class="col-12">
                     <label for="phone" class="form-label">
-                        <i class="fas fa-phone me-2"></i>เบอร์โทรศัพท์
+                        <i class="fas fa-phone me-2"></i>ເບີໂທລະສັບ
                     </label>
                     <input type="text" class="form-control" id="phone" name="phone">
                 </div>
@@ -159,11 +159,11 @@
             
             <div class="mt-4">
                 <button type="submit" class="btn btn-signup mb-3">
-                    <i class="fas fa-user-plus me-2"></i>สมัครสมาชิก
+                    <i class="fas fa-user-plus me-2"></i>ລົງທະບຽນ
                 </button>
                 
                 <a href="login.jsp" class="btn btn-login">
-                    <i class="fas fa-sign-in-alt me-2"></i>มีบัญชีแล้ว? เข้าสู่ระบบ
+                    <i class="fas fa-sign-in-alt me-2"></i>ມີບັນຊີຢູ່ແລ້ວບໍ? ເຂົ້າສູ່ລະບົບ.
                 </a>
             </div>
         </form>

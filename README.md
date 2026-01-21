@@ -1,43 +1,43 @@
-# Chat LINE - Web Chat Application
+# Chat LINE - ແອັບພລິເຄຊັນເວັບແຊັດ (Web Chat Application)
 
-แอปพลิเคชันแชทเว็บที่ออกแบบให้คล้ายกับ LINE โดยใช้ JSP, Servlet, Bootstrap 5, CSS และ JavaScript
+ແອັບພລິເຄຊັນເວັບແຊັດທີ່ອອກແບບມາໃຫ້ຄ້າຍຄືກັບ LINE ໂດຍໃຊ້ JSP, Servlet, Bootstrap 5, CSS ແລະ JavaScript.
 
-## คุณสมบัติ
+## ຄຸນສົມບັດ
 
-- ✅ ระบบเข้าสู่ระบบและสมัครสมาชิก
-- ✅ หน้าจอแชทแบบ LINE (สีเขียว, ฟองข้อความ)
-- ✅ ส่งและรับข้อความแบบ Real-time
-- ✅ รายชื่อผู้ติดต่อ
-- ✅ ระบบฐานข้อมูล MySQL
-- ✅ Responsive Design
+-  ລະບົບເຂົ້າສູ່ລະບົບ ແລະ ສະໝັກສະມາຊິກ
+-  ໜ້າຈໍແຊັດແບບ LINE (ສີຂຽວ, ຟອງຂໍ້ຄວາມ)
+-  ສົ່ງ ແລະ ຮັບຂໍ້ຄວາມແບບ Real-time
+-  ລາຍຊື່ຜູ້ຕິດຕໍ່
+-  ລະບົບຖານຂໍ້ມູນ MySQL
+-  Responsive Design (ຮອງຮັບການສະແດງຜົນທຸກໜ້າຈໍ)
 
-## เทคโนโลยีที่ใช้
+## ເຕັກໂນໂລຊີທີ່ໃຊ້
 
 - **Backend**: JSP, Java Servlet
 - **Frontend**: Bootstrap 5, CSS3, JavaScript
 - **Database**: MySQL
 - **Server**: Apache Tomcat
 
-## การติดตั้ง
+## ການຕິດຕັ້ງ
 
-### 1. ฐานข้อมูล
+### 1. ຖານຂໍ້ມູນ
 
-รันไฟล์ `database.sql` เพื่อสร้างฐานข้อมูลและตาราง:
+ລັນ (Run) ໄຟລ໌ `database.sql` ເພື່ອສ້າງຖານຂໍ້ມູນ ແລະ ຕາຕະລາງ:
 
 ```sql
 mysql -u root -p < database.sql
 ```
 
-หรือรันคำสั่ง SQL ใน MySQL:
+ຫຼື ລັນຄຳສັ່ງ SQL ໃນ MySQL:
 
 ```bash
 mysql -u root -p
 source database.sql
 ```
 
-### 2. การตั้งค่า
+### 2. ການຕັ້ງຄ່າ
 
-แก้ไขไฟล์ `src/config/db/DBconnect.java` เพื่อตั้งค่าการเชื่อมต่อฐานข้อมูล:
+ແກ້ໄຂໄຟລ໌ `src/config/db/DBconnect.java` ເພື່ອຕັ້ງຄ່າການເຊື່ອມຕໍ່ຖານຂໍ້ມູນ:
 
 ```java
 private static String url = "jdbc:mysql://localhost:3306/chatgtdb?useSSL=false&serverTimezone=UTC";
@@ -45,14 +45,14 @@ private static String username = "root";
 private static String password = "your_password";
 ```
 
-### 3. ไลบรารีที่จำเป็น
+### 3. ໄລບຣາຣີ (Library) ທີ່ຈຳເປັນ
 
 - MySQL JDBC Driver (mysql-connector-java-8.0.x.jar)
-  - วางไฟล์ใน `WEB-INF/lib/`
+  - ວາງໄຟລ໌ໃນ `WEB-INF/lib/`
 
-### 4. การคอมไพล์
+### 4. ການຄອມໄພລ໌ (Compile)
 
-คอมไพล์ไฟล์ Java ทั้งหมด:
+ຄອມໄພລ໌ໄຟລ໌ Java ທັງໝົດ:
 
 ```bash
 javac -cp "%TOMCAT%\lib\servlet-api.jar;%TOMCAT%\lib\jsp-api.jar" -d WEB-INF\classes src\config\db\DBconnect.java
@@ -61,32 +61,32 @@ javac -cp "%TOMCAT%\lib\servlet-api.jar;%TOMCAT%\lib\jsp-api.jar;WEB-INF\classes
 javac -cp "%TOMCAT%\lib\servlet-api.jar;%TOMCAT%\lib\jsp-api.jar;WEB-INF\classes" -d WEB-INF\classes src\servlet\*.java
 ```
 
-หรือใช้ IDE เช่น Eclipse/IntelliJ IDEA
+ຫຼື ໃຊ້ IDE ເຊັ່ນ Eclipse/IntelliJ IDEA
 
-### 5. รันแอปพลิเคชัน
+### 5. ລັນແອັບພລິເຄຊັນ (Run Application)
 
-1. วางโฟลเดอร์ `chat-jsp` ใน `webapps` ของ Tomcat
-2. เริ่มต้น Tomcat Server
-3. เปิดเบราว์เซอร์ไปที่: `http://localhost:8080/chat-jsp`
+1. ວາງໂຟນເດີ `chat-jsp` ໃນ `webapps` ຂອງ Tomcat
+2. ເລີ່ມຕົ້ນ Tomcat Server
+3. ເປີດບຣາວເຊີໄປທີ່: `http://localhost:8080/chat-jsp`
 
-## การใช้งาน
+## ການໃຊ້ງານ
 
-### สมัครสมาชิก
-1. ไปที่หน้า Sign Up
-2. กรอกข้อมูล: ชื่อ, นามสกุล, ชื่อผู้ใช้, รหัสผ่าน
-3. คลิก "สมัครสมาชิก"
+### ສະໝັກສະມາຊິກ
+1. ໄປທີ່ໜ້າ Sign Up
+2. ປ້ອນຂໍ້ມູນ: ຊື່, ນາມສະກຸນ, ຊື່ຜູ້ໃຊ້, ລະຫັດຜ່ານ
+3. ຄລິກ "ສະໝັກສະມາຊິກ"
 
-### เข้าสู่ระบบ
-1. ไปที่หน้า Login
-2. กรอกชื่อผู้ใช้และรหัสผ่าน
-3. คลิก "เข้าสู่ระบบ"
+### ເຂົ້າສູ່ລະບົບ
+1. ໄປທີ່ໜ້າ Login
+2. ປ້ອນຊື່ຜູ້ໃຊ້ ແລະ ລະຫັດຜ່ານ
+3. ຄລິກ "ເຂົ້າສູ່ລະບົບ"
 
-### ส่งข้อความ
-1. เลือกผู้ติดต่อจากรายชื่อด้านซ้าย
-2. พิมพ์ข้อความในช่องด้านล่าง
-3. กด Enter หรือคลิกปุ่มส่ง
+### ສົ່ງຂໍ້ຄວາມ
+1. ເລືອກຜູ້ຕິດຕໍ່ຈາກລາຍຊື່ດ້ານຊ້າຍ
+2. ພິມຂໍ້ຄວາມໃນຊ່ອງດ້ານລຸ່ມ
+3. ກົດ Enter ຫຼື ຄລິກປຸ່ມສົ່ງ
 
-## โครงสร้างโปรเจกต์
+## ໂຄງສ້າງໂປຣເຈັກ
 
 ```
 chat-jsp/
@@ -124,9 +124,9 @@ chat-jsp/
 └── index.jsp
 ```
 
-## ฐานข้อมูล
+## ຖານຂໍ້ມູນ
 
-### ตาราง users
+### ຕາຕະລາງ users
 - id (INT, PRIMARY KEY)
 - firstname (VARCHAR)
 - lastname (VARCHAR)
@@ -136,19 +136,13 @@ chat-jsp/
 - phone (VARCHAR)
 - created_at (TIMESTAMP)
 
-### ตาราง messages
+### ຕາຕະລາງ messages
 - id (INT, PRIMARY KEY)
 - from_user (VARCHAR)
 - to_user (VARCHAR)
 - message (TEXT)
 - timestamp (TIMESTAMP)
 
-## หมายเหตุ
+## ຜູ້ພັດທະນາ
 
-- แอปพลิเคชันนี้ใช้การ Polling (ตรวจสอบข้อความใหม่ทุก 2 วินาที) สำหรับ Real-time chat
-- สำหรับ Production ควรใช้ WebSocket สำหรับประสิทธิภาพที่ดีกว่า
-- รหัสผ่านควรเข้ารหัสก่อนเก็บในฐานข้อมูล (ใช้ BCrypt หรือ SHA-256)
-
-## ผู้พัฒนา
-
-สร้างด้วย JSP, Servlet, Bootstrap 5 และ MySQL
+ສ້າງດ້ວຍ JSP, Servlet, Bootstrap 5 ແລະ MySQL.
