@@ -34,7 +34,7 @@ function sendMessage() {
                 messageInput.value = '';
                 loadMessages();
             } else {
-                alert('เกิดข้อผิดพลาดในการส่งข้อความ');
+                alert('ເກີດຄວາມຜິດພາດໃນລະຫວ່າງການສົ່ງຂໍ້ຄວາມ.');
             }
         }
     };
@@ -74,7 +74,7 @@ function displayMessages(messages) {
         
         let avatarHtml = '';
         if(msg.fromUser !== currentUserId) {
-            avatarHtml = '<img src="../../assets/images/logo.jpg" alt="User" class="message-avatar">';
+            avatarHtml = '<img src=https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" alt="User" class="message-avatar">';
         }
         
         const time = formatTime(msg.timestamp);
@@ -86,7 +86,7 @@ function displayMessages(messages) {
             '</div>';
         
         if(msg.fromUser === currentUserId) {
-            messageDiv.innerHTML += '<img src="../../assets/images/logo.jpg" alt="User" class="message-avatar">';
+            messageDiv.innerHTML += '<img src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" alt="User" class="message-avatar">';
         }
         
         messagesContainer.appendChild(messageDiv);
@@ -104,10 +104,10 @@ function formatTime(timestamp) {
     const diff = now - date;
     
     if(diff < 60000) { // Less than 1 minute
-        return 'เมื่อสักครู่';
+        return 'ພຽງ​ແຕ່​ບໍ່​ດົນ​ມາ​ນີ້​';
     } else if(diff < 3600000) { // Less than 1 hour
         const minutes = Math.floor(diff / 60000);
-        return minutes + ' นาทีที่แล้ว';
+        return minutes + ' ນາທີທີເເລ້ວ';
     } else if(diff < 86400000) { // Less than 1 day
         return date.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
     } else {

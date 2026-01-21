@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         
         if(username == null || password == null || username.trim().isEmpty() || password.trim().isEmpty()) {
-            request.setAttribute("error", "กรุณากรอกชื่อผู้ใช้และรหัสผ่าน");
+            request.setAttribute("error", "ກະລຸນາໃສ່ຊື່ຜູ້ໃຊ້ ແລະລະຫັດຜ່ານຂອງທ່ານ.");
             request.getRequestDispatcher("/src/page/login.jsp").forward(request, response);
             return;
         }
@@ -54,13 +54,13 @@ public class LoginServlet extends HttpServlet {
                 pstmt.close();
                 conn.close();
                 
-                request.setAttribute("error", "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
+                request.setAttribute("error", "ຊື່ຜູ້ໃຊ້ ຫຼື ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ.");
                 request.getRequestDispatcher("/src/page/login.jsp").forward(request, response);
             }
             
         } catch(Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ");
+            request.setAttribute("error", "ເກີດຄວາມຜິດພາດໃນການເຂົ້າສູ່ລະບົບ.");
             request.getRequestDispatcher("/src/page/login.jsp").forward(request, response);
         }
     }

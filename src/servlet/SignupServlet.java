@@ -53,7 +53,7 @@ public class SignupServlet extends HttpServlet {
                 rs.close();
                 checkStmt.close();
                 conn.close();
-                request.setAttribute("error", "ชื่อผู้ใช้นี้ถูกใช้งานแล้ว");
+                request.setAttribute("error", " ຊື່ຜູ້ໃຊ້ນີ້ຖືກໃຊ້ແລ້ວ.");
                 request.getRequestDispatcher("/src/page/signup.jsp").forward(request, response);
                 return;
             }
@@ -77,13 +77,13 @@ public class SignupServlet extends HttpServlet {
             if(result > 0) {
                 response.sendRedirect(request.getContextPath() + "/src/page/login.jsp?success=1");
             } else {
-                request.setAttribute("error", "เกิดข้อผิดพลาดในการสมัครสมาชิก");
+                request.setAttribute("error", "ເກີດຄວາມຜິດພາດຂຶ້ນໃນລະຫວ່າງການລົງທະບຽນສະມາຊິກ.");
                 request.getRequestDispatcher("/src/page/signup.jsp").forward(request, response);
             }
             
         } catch(Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", "เกิดข้อผิดพลาด: " + e.getMessage());
+            request.setAttribute("error", "ເກີດຄວາມຜິດພາດຂຶ້ນ.: " + e.getMessage());
             request.getRequestDispatcher("/src/page/signup.jsp").forward(request, response);
         }
     }

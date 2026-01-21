@@ -22,7 +22,7 @@ public class SendMessageServlet extends HttpServlet {
         String currentUser = (String) session.getAttribute("user");
         
         if(currentUser == null) {
-            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "กรุณาเข้าสู่ระบบ");
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "ກະລຸນາເຂົ້າສູ່ລະບົບ");
             return;
         }
         

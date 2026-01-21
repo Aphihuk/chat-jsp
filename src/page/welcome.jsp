@@ -62,23 +62,23 @@ if(session.getAttribute("user") != null){
 <body>
     <div class="welcome-container">
         <img src="../assets/images/logo.jpg" alt="Logo">
-        <h1>ยินดีต้อนรับสู่ Chat LINE</h1>
-        <p>บริการข้อความฟรี, การโทรเสียง และวิดีโอที่ขับเคลื่อนด้วย AI</p>
+        <h1>ຍິນດີຕ້ອນຮັບ Chat LINE</h1>
+        <p>ການສົ່ງຂໍ້ຄວາມ, ສຽງ ແລະການໂທວິດີໂອ</p>
         <%
         Connection conn = DBconnect.getConnection();
         if(conn != null) {
         %>
         <div>
             <a href="login.jsp" class="btn btn-light btn-welcome">
-                <i class="fas fa-sign-in-alt me-2"></i>เข้าสู่ระบบ
+                <i class="fas fa-sign-in-alt me-2"></i>ເຂົ້າສູ່ລະບົບ
             </a>
             <a href="signup.jsp" class="btn btn-outline-light btn-welcome">
-                <i class="fas fa-user-plus me-2"></i>สมัครสมาชิก
+                <i class="fas fa-user-plus me-2"></i>ສະໝັກສະມາຊິກ
             </a>
         </div>
         <% } else { %>
         <div class="alert alert-warning">
-            <i class="fas fa-exclamation-triangle me-2"></i>ไม่สามารถเชื่อมต่อฐานข้อมูลได้
+            <i class="fas fa-exclamation-triangle me-2"></i>ບໍ່ສາມາດເຊື່ອມຕໍ່ກັບຖານຂໍ້ມູນໄດ້.
         </div>
         <% } %>
     </div>

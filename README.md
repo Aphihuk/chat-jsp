@@ -55,7 +55,10 @@ private static String password = "your_password";
 คอมไพล์ไฟล์ Java ทั้งหมด:
 
 ```bash
-javac -cp "WEB-INF/lib/*:WEB-INF/classes" -d WEB-INF/classes src/**/*.java
+javac -cp "%TOMCAT%\lib\servlet-api.jar;%TOMCAT%\lib\jsp-api.jar" -d WEB-INF\classes src\config\db\DBconnect.java
+javac -cp "%TOMCAT%\lib\servlet-api.jar;%TOMCAT%\lib\jsp-api.jar;WEB-INF\classes" -d WEB-INF\classes src\model\Message.java
+javac -cp "%TOMCAT%\lib\servlet-api.jar;%TOMCAT%\lib\jsp-api.jar;WEB-INF\classes" -d WEB-INF\classes src\dao\MessageDAO.java
+javac -cp "%TOMCAT%\lib\servlet-api.jar;%TOMCAT%\lib\jsp-api.jar;WEB-INF\classes" -d WEB-INF\classes src\servlet\*.java
 ```
 
 หรือใช้ IDE เช่น Eclipse/IntelliJ IDEA
