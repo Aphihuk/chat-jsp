@@ -1,4 +1,3 @@
-
 let currentChatWith = document.getElementById('currentChatWith').value;
 let currentUserId = document.getElementById('currentUserId').value;
 let contextPath = document.getElementById('contextPath') ? document.getElementById('contextPath').value : '';
@@ -24,43 +23,39 @@ function sendMessage() {
         return;
     }
     
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', contextPath + '/servlet/SendMessageServlet', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    const params = new URLSearchParams({
+        fromUser: currentUserId,
+        toUser: currentChatWith,
+        message: message
+    });
     
-    xhr.onreadystatechange = function() {
-        if(xhr.readyState === 4) {
-            if(xhr.status === 200) {
-                messageInput.value = '';
-                loadMessages();
-            } else {
-                alert('ເກີດຄວາມຜິດພາດໃນລະຫວ່າງການສົ່ງຂໍ້ຄວາມ.');
-            }
-        }
-    };
-    
-    const params = 'fromUser=' + encodeURIComponent(currentUserId) + 
-                   '&toUser=' + encodeURIComponent(currentChatWith) + 
-                   '&message=' + encodeURIComponent(message);
-    xhr.send(params);
+    fetch(contextPath + '/servlet/SendMessageServlet', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: params
+    })
+    .then(response => response.ok ? response : Promise.reject(response))
+    .then(() => {
+        messageInput.value = '';
+        loadMessages();
+    })
+    .catch(() => alert('ເກີດຄວາມຜິດພາດໃນລະຫວ່າງການສົ່ງຂໍ້ຄວາມ.'));
 }
 
 // Load messages
 function loadMessages() {
     if(!currentChatWith) return;
     
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', contextPath + '/servlet/GetMessagesServlet?fromUser=' + encodeURIComponent(currentUserId) + 
-             '&toUser=' + encodeURIComponent(currentChatWith), true);
+    const url = new URL(contextPath + '/servlet/GetMessagesServlet', window.location.origin);
+    url.searchParams.append('fromUser', currentUserId);
+    url.searchParams.append('toUser', currentChatWith);
     
-    xhr.onreadystatechange = function() {
-        if(xhr.readyState === 4 && xhr.status === 200) {
-            const messages = JSON.parse(xhr.responseText);
-            displayMessages(messages);
-        }
-    };
-    
-    xhr.send();
+    fetch(url)
+    .then(response => response.json())
+    .then(messages => displayMessages(messages))
+    .catch(error => console.error('Error loading messages:', error));
 }
 
 // Display messages
@@ -74,7 +69,7 @@ function displayMessages(messages) {
         
         let avatarHtml = '';
         if(msg.fromUser !== currentUserId) {
-            avatarHtml = '<img src=https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" alt="User" class="message-avatar">';
+            avatarHtml = '<img src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" alt="User" class="message-avatar">';
         }
         
         const time = formatTime(msg.timestamp);
@@ -103,12 +98,12 @@ function formatTime(timestamp) {
     const now = new Date();
     const diff = now - date;
     
-    if(diff < 60000) { // Less than 1 minute
+    if(diff < 60000) {
         return 'ພຽງ​ແຕ່​ບໍ່​ດົນ​ມາ​ນີ້​';
-    } else if(diff < 3600000) { // Less than 1 hour
+    } else if(diff < 3600000) {
         const minutes = Math.floor(diff / 60000);
         return minutes + ' ນາທີທີເເລ້ວ';
-    } else if(diff < 86400000) { // Less than 1 day
+    } else if(diff < 86400000) {
         return date.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
     } else {
         return date.toLocaleDateString('th-TH', { month: 'short', day: 'numeric' }) + 
@@ -141,7 +136,7 @@ function startMessagePolling() {
     if(messageInterval) {
         clearInterval(messageInterval);
     }
-    messageInterval = setInterval(loadMessages, 2000); // Poll every 2 seconds
+    messageInterval = setInterval(loadMessages, 2000);
 }
 
 // Stop polling
@@ -170,26 +165,24 @@ document.getElementById('searchContact')?.addEventListener('input', function(e) 
 function updateContactPreviews() {
     if(!currentChatWith) return;
     
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', contextPath + '/servlet/GetLastMessageServlet?userId=' + encodeURIComponent(currentUserId), true);
+    const url = new URL(contextPath + '/servlet/GetLastMessageServlet', window.location.origin);
+    url.searchParams.append('userId', currentUserId);
     
-    xhr.onreadystatechange = function() {
-        if(xhr.readyState === 4 && xhr.status === 200) {
-            const previews = JSON.parse(xhr.responseText);
-            previews.forEach(function(preview) {
-                const previewEl = document.getElementById('preview_' + preview.username);
-                const timeEl = document.getElementById('time_' + preview.username);
-                if(previewEl) {
-                    previewEl.textContent = preview.message || 'เริ่มสนทนา';
-                }
-                if(timeEl && preview.timestamp) {
-                    timeEl.textContent = formatTime(preview.timestamp);
-                }
-            });
-        }
-    };
-    
-    xhr.send();
+    fetch(url)
+    .then(response => response.json())
+    .then(previews => {
+        previews.forEach(function(preview) {
+            const previewEl = document.getElementById('preview_' + preview.username);
+            const timeEl = document.getElementById('time_' + preview.username);
+            if(previewEl) {
+                previewEl.textContent = preview.message || 'เริ่มสนทนา';
+            }
+            if(timeEl && preview.timestamp) {
+                timeEl.textContent = formatTime(preview.timestamp);
+            }
+        });
+    })
+    .catch(error => console.error('Error updating previews:', error));
 }
 
 // Update previews periodically
